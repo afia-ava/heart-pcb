@@ -4,7 +4,7 @@ A PCB is a foundational component in electronics, designed as a board (usually w
 
 You can use a breadboard to prototype; however, with a PCB, the components are soldered onto the board instead of having wires everywhere. The copper traces act like tiny wires that connect components together so electricity flows through the correct path in a complete circuit. You may consider the components as buildings, the traces as roads, and electric current as cars traveling between them. The point is, it is a clean, compact, and reliable way for electrical components to work. 
 
-![What is High Speed PCB Design_-97613.jpg](design%20pcb/What_is_High_Speed_PCB_Design_-97613.jpg)
+![What is High Speed PCB Design_-97613.jpg](images/pcb-design.jpg)
 
 ## **Types of PCB**
 
@@ -36,7 +36,7 @@ To design your PCB, you’ll need to install KiCad, a free and open-source PCB d
 
 P.S. There is no functional difference across the locations mentioned. For North America, you could get either the GitHub or MIT one. 
 
-![image.png](design%20pcb/image.png)
+![image.png](images/image1.png)
 
 ## Step Two: Creating Schematic
 
@@ -57,7 +57,7 @@ The components we’ll be using are:
 - x1 1 Push Button
 - x1 9V Battery Holder Clip
 
-![image.png](design%20pcb/image%201.png)
+![image.png](images/image2.png)
 
 Now open the schematic editor and use the “Add Symbol” tool to search for and insert components from the built-in library. 
 
@@ -76,13 +76,13 @@ R
 Resistor
 Keywords: R res resistor
 
-![image.png](design%20pcb/b46dd394-39d5-426a-8245-58c4acc5bbad.png)
+![image.png](images/image3.png)
 
 R_Variable
 Variable resistor
 Keywords: R res resistor variable potentiometer rheostat
 
-![image.png](design%20pcb/image%202.png)
+![image.png](images/image4.png)
 
 P.S: After you add the components, you can rotate their position with the shortcut R key. 
 
@@ -94,7 +94,7 @@ C_Polarized
 Polarized capacitor
 Keywords: cap capacitor
 
-![image.png](design%20pcb/image%203.png)
+![image.png](images/image5.png)
 
 Now we are going to add the push button switch (SW), which is used to turn on the lights when you press it. In your heart PCB, the pushbutton acts as a momentary switch that connects the battery to the circuit only while it's pressed by closing the circuit. To add the momentary switch, look for the SW Push Button. 
 
@@ -102,7 +102,7 @@ SW_Push
 Push button switch, generic, two pins
 Keywords: switch normally-open pushbutton push-button
 
-![image.png](design%20pcb/f7983228-009f-44fc-9e8f-b1712f5c99e3.png)
+![image.png](images/image6.png)
 
 Now we need to add the battery. To do so, look up BT and add it to your schematic diagram. 
 
@@ -110,7 +110,7 @@ Battery
 Multiple-cell battery
 Keywords: batt voltage-source cell
 
-![image.png](design%20pcb/image%204.png)
+![image.png](images/image7.png)
 
 Next, add the ground (GND) connection to the schematic. It represents the reference point of the circuit and provides a path for electrical current to return to the battery. It should be connected to the GND of the 555 timer IC and the cathode (negative side) of the battery. 
 
@@ -118,7 +118,7 @@ GND
 Power symbol creates a global label with name "GND" , ground
 Keywords: global power
 
-![image.png](design%20pcb/image%205.png)
+![image.png](images/image8.png)
 
 You should also place a PWR_FLAG symbol on the power line coming from the battery. The power flag isn’t a real component in the physical circuit; instead, it tells KiCad that the wire is intentionally supplying power. This prevents showing electrical rule check warnings and makes the design properly powered. 
 
@@ -126,7 +126,7 @@ PWR_FLAG
 Special symbol for telling ERC where power comes from
 Keywords: flag power
 
-![image.png](design%20pcb/image%206.png)
+![image.png](images/image9.png)
 
 You will also need LEDs, as many as you want to be on your PCB board. For this heart PCB, I’ll be adding 16 of them. In the same process, look up for LED and GND to add in the cathode (negative part). In an LED symbol, the end with the straight line is the cathode. 
 
@@ -134,23 +134,23 @@ LED
 Light emitting diode
 Keywords: LED diode
 
-![image.png](design%20pcb/image%207.png)
+![image.png](images/image10.png)
 
 GND
 Power symbol creates a global label with name "GND" , ground
 Keywords: global power
 
-![image.png](design%20pcb/image%208.png)
+![image.png](images/image11.png)
 
 Now, we’re going to add labels from the timer’s pin 3. It is the output pin that switches on and off to create the blinking effect. Without a label, we need to wire the anode from all LEDs to this pin 3. However, with a label, we can wire two pins without adding physical wire between them. As long as both pins have the same name, KiCan knows that they’re connected. 
 
 Click "Global Labels” in the right sidebar (shortcut key Ctrl + L) and create the label TOUT (timer output). Now add this label to pin 3 of your timer 555 as well as to all the anodes (positive sides) of each LED.  
 
-![image.png](design%20pcb/image%209.png)
+![image.png](images/image12.png)
 
 This is how the LED schematic should look like:
 
-![image.png](design%20pcb/image%2010.png)
+![image.png](images/image13.png)
 
 ### Assign Footprints
 
@@ -158,9 +158,9 @@ The footprints are the physical shapes of the parts that will go on yotu PCB. Ea
 
 On the top menu bar of the schematic page, go to Tools and then to Assign Footprints. A window will open showing all your components on the left and the footprint library on the right. In the search bar above, you can search for the name of the footprints and add it to the components. 
 
-![image.png](design%20pcb/image%2011.png)
+![image.png](images/image14.png)
 
-![image.png](design%20pcb/image%2012.png)
+![image.png](images/image15.png)
 
 Battery: Connector_Wire:SolderWire-0.1sqmm_1x02_P3.6mm_D0.4mm_OD1mm
 C_Polarized:
@@ -183,7 +183,7 @@ Now that all components are placed, it’s time to wire them together. Wiring th
 
 To draw wires, you can select the draw wire option on the right sidebar, or else choose shortcut key W and double-click to end drawing. 
 
-![image.png](design%20pcb/image%2013.png)
+![image.png](images/image16.png)
 
 **Powering the Circuit** 
 
@@ -213,7 +213,7 @@ You are now done with the schematic of your first PCB project!!!
 
 As you are done with schematic, you need to open your schematic in the PCB editor. In the top menu bar, click on "switch to PCB editor.” It will open a new tab in the PCB editor with all the components in the schametic file. 
 
-![image.png](design%20pcb/image%2014.png)
+![image.png](images/image17.png)
 
 ### Drawing the Shape
 
@@ -221,13 +221,13 @@ Now we’ll be drawing the shape for how we want the PCB to be manufactured. It�
 
 First, you should make sure that you are on the Edge.Cuts layer. Anything you draw on this layer becomes the physical boundary of your PCB. So now with the drawing tool on the right side bar (using line, arc, shapes) we draw the heart shape. Make sure to connect all the points and so that it is a closed loop. Later, you will place all of your components inside this outline. 
 
-![image.png](design%20pcb/4cfe1cc1-98d2-4baa-bf72-f2314a050dce.png)
+![image.png](images/image18.png)
 
 ### Arrange the Components
 
 Now arrange all your components inside the outline you just drew. For this heart PCB, I’ll be putting all the LEDs all around the corner and the 555 timer, resistors, capacitor, push button in the middle. You are free to choose where to place what components on your PCB board. However, make sure you don’t cram all of components in one spot because you need enough roon to draw the copper traces (wires) between pins. 
 
-![image.png](design%20pcb/image%2015.png)
+![image.png](images/image19.png)
 
 ### Routing PCB
 
@@ -239,7 +239,7 @@ Select the route single track button on the right side and connect the pins by f
 
 After you are done tracing to route the PCB, you should always run the Design Rule Check (DRC). It will show any errors you have on the tracing, in terms of hacing extra tracing not connected to anywhere and such. Fix any errors the DRC finds before exportign your PCB for manufacturing. 
 
-![image.png](design%20pcb/image%2016.png)
+![image.png](images/image20.png)
 
 ## Step Four: Export the PCB Board
 
@@ -249,9 +249,9 @@ YAYY! You just finished designing yoru first PCB!
 
 Now is the fun part of taking a look at your PCB board in the 3D viewer. In the top menu, there’s an option for 3D view. You should inspect your PCB from all angles and make sure it looks like the way you want it to be manufactured. 
 
-![image.png](design%20pcb/image%2017.png)
+![image.png](images/image21.png)
 
-![image.png](design%20pcb/image%2018.png)
+![image.png](images/image22.png)
 
 ### Download Your PCB for Manufacturing
 
